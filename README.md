@@ -9,8 +9,7 @@ displayed on a Meta Quest 3. Working in small groups around a shared headset, yo
 will serve, deliver, render, and perceptually evaluate volumetric content under
 controlled network impairments.
 
-> **Status:** pre-release. Content is being assembled for the tutorial. A video
-> walkthrough will be published four weeks before the conference.
+
 
 ## Pipeline
 
