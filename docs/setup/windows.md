@@ -22,14 +22,14 @@ passes, your laptop is ready.
 - **A Steam account**, for SteamVR.
 - **Your charger.** Keep the laptop on AC power for the whole session.
 - **RAM:** `TODO(organizers)`.
-- **Free disk space:** `TODO(organizers)`. The player takes about 0.5 GB unzipped. The server image takes `TODO(organizers)`.
+- **Free disk space:** `TODO(organizers)`. The downloads take 113 MB (`vpcc-server.tar`) and 203 MB (the player zip). After unzipping, the player takes about 540 MB. After import, the server takes about 180 MB.
 
 The organizers bring the Meta Quest 3 headsets, with the ALVR 20.14.1 client already installed.
 
 ## 1. Download the tutorial files
 
-1. Open the **Releases** page of this repository and download both files into your `Downloads` folder:
-   - `VPCC-Tutorial-win64-<version>.zip`, the player.
+1. Open the **Releases** page of this repository and download both files of the v0.1-dryrun pre-release into your `Downloads` folder:
+   - `VPCC-Tutorial-win64-v0.1.zip`, the player.
    - `vpcc-server.tar`, the server image.
 
    `TODO(organizers)`: final asset names and version, once the release exists.
@@ -51,15 +51,17 @@ The organizers bring the Meta Quest 3 headsets, with the ALVR 20.14.1 client alr
 4. Check the player:
 
    ```powershell
-   Get-FileHash .\VPCC-Tutorial-win64-<version>.zip -Algorithm SHA256
+   Get-FileHash .\VPCC-Tutorial-win64-v0.1.zip -Algorithm SHA256
    ```
 
    You should see a hash equal to the one in the table below.
 
 | File | SHA-256 |
 |---|---|
-| `vpcc-server.tar` | `TODO(organizers)` |
-| `VPCC-Tutorial-win64-<version>.zip` | `TODO(organizers)` |
+| `vpcc-server.tar` | `b9c50a5a6827b581e8764860a371a73e26033b4f85e9f90345c0fe9828b8d21d` |
+| `VPCC-Tutorial-win64-v0.1.zip` | `6bbf4d80c5d2b62b0ae2dc4b4c8a52a288311fdb00fd0f27c6061af8800845e6` |
+
+The same hashes are in `SHA256SUMS.txt` on the release page.
 
 If a hash does not match, download the file again.
 
@@ -154,12 +156,10 @@ Install exactly version **20.14.1**. The headsets run the 20.14.1 client, and th
 1. Unzip the player into `C:\VPCC-Tutorial`:
 
    ```powershell
-   Expand-Archive $HOME\Downloads\VPCC-Tutorial-win64-<version>.zip -DestinationPath C:\VPCC-Tutorial
+   Expand-Archive $HOME\Downloads\VPCC-Tutorial-win64-v0.1.zip -DestinationPath C:\VPCC-Tutorial
    ```
 
    You should see `VPCC-Tutorial.exe` and `tutorial_config.json` in the folder.
-
-   `TODO(organizers)`: confirm whether the zip has a top-level folder, and adjust the path if it does.
 
 ## 7. Use the discrete GPU (laptops with two GPUs)
 
