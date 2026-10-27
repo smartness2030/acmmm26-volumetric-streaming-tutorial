@@ -43,27 +43,29 @@ The organizers bring the Meta Quest 3 headsets, with the ALVR 20.14.1 client alr
 3. Check the server image:
 
    ```powershell
-   Get-FileHash .\vpcc-server.tar -Algorithm SHA256
+   (Get-FileHash .\vpcc-server.tar -Algorithm SHA256).Hash -eq "b9c50a5a6827b581e8764860a371a73e26033b4f85e9f90345c0fe9828b8d21d"
    ```
 
-   You should see a hash equal to the one in the table below.
+   You should see `True`.
 
 4. Check the player:
 
    ```powershell
-   Get-FileHash .\VPCC-Tutorial-win64-v0.1.zip -Algorithm SHA256
+   (Get-FileHash .\VPCC-Tutorial-win64-v0.1.zip -Algorithm SHA256).Hash -eq "6bbf4d80c5d2b62b0ae2dc4b4c8a52a288311fdb00fd0f27c6061af8800845e6"
    ```
 
-   You should see a hash equal to the one in the table below.
+   You should see `True`.
 
 | File | SHA-256 |
 |---|---|
 | `vpcc-server.tar` | `b9c50a5a6827b581e8764860a371a73e26033b4f85e9f90345c0fe9828b8d21d` |
 | `VPCC-Tutorial-win64-v0.1.zip` | `6bbf4d80c5d2b62b0ae2dc4b4c8a52a288311fdb00fd0f27c6061af8800845e6` |
 
+Get-FileHash prints hashes in capital letters, and the comparison ignores case.
+
 The same hashes are in `SHA256SUMS.txt` on the release page.
 
-If a hash does not match, download the file again.
+If a hash prints False, download the file again.
 
 ## 2. Install WSL
 
