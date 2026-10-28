@@ -10,38 +10,21 @@ organizer in the room, or before the tutorial report it: `TODO(organizers)`
 |---|---|---|---|
 | `TODO(organizers)` | `TODO(organizers)` | `TODO(organizers)` | `TODO(organizers)` |
 
-## Player
+## VR mode and the player
 
-### "GLDXInterop Init failed" in `Player.log`, or nothing appears in the headset
+Most problems show up in the player's diagnostics panel or in the output of `check-vr.ps1`.
 
-**Cause:** SteamVR is in a bad state.
+| Panel or checker shows | Cause | Fix |
+|---|---|---|
+| `interop: initialized no`, and the player falls back to the desktop view | SteamVR has no headset driver | Install the ALVR streamer 20.14.1, open its dashboard and let its setup register the SteamVR driver ([setup step 5](windows.md#5-install-the-alvr-streamer-20141)) |
+| `check-vr.ps1`: `FAIL` SteamVR not registered | SteamVR was never launched | Open Steam, sign in, launch SteamVR once and let it update |
+| The GPU line shows Intel or another integrated GPU | A laptop with two GPUs runs the player on the integrated one | Set **High performance** for the player, `vrserver.exe` and ALVR ([setup step 7](windows.md#7-use-the-discrete-gpu-laptops-with-two-gpus)) |
+| VR worked before, now it fails | SteamVR is in a bad state | Quit SteamVR completely, open it again, then open the player again |
+| **Find server**: server not started | The server is not running | In the WSL window, run `./start-server.sh` |
 
-**Fix:**
+In the room: if a group's VR mode is not fixed within about 5 minutes, the group continues in desktop mode, where the network exercise is identical, or moves to an organizer's spare laptop.
 
-1. Close the player.
-2. Close SteamVR, then start it again.
-3. Start the player again.
-
-### Start does nothing, or the status line says the session failed
-
-**Cause:** the player cannot reach the server. Usually the **Server** field still holds the default `127.0.0.1`, which is not the server's address.
-
-**Fix:**
-
-1. Type the address that `./start-server.sh` printed into the **Server** field.
-2. Check that the server window is still open and the server is still running. If it stopped, start it again with `./start-server.sh`.
-
-### The address that used to work stopped working
-
-**Cause:** the WSL address changes every time WSL restarts.
-
-**Fix:** read the new address from the box that `./start-server.sh` prints, and type it into the **Server** field.
-
-### The app runs on the integrated GPU, or the frame rate is low
-
-**Cause:** Windows runs the player, SteamVR or ALVR on the integrated GPU.
-
-**Fix:** set **High performance** for all three apps, as in [step 7 of the setup guide](windows.md#7-use-the-discrete-gpu-laptops-with-two-gpus). Restart the apps afterwards.
+## Playback
 
 ### Stuttering in the clean run
 
@@ -53,7 +36,7 @@ organizer in the room, or before the tutorial report it: `TODO(organizers)`
 2. Open **Settings → System → Power & battery** and set **Power mode** to **Best performance**.
 3. Run the clean baseline again.
 
-### SmartScreen blocks `VPCC-Tutorial.exe`
+### SmartScreen blocks the player
 
 **Cause:** the player is not signed, so Windows does not recognize it.
 
@@ -90,4 +73,4 @@ organizer in the room, or before the tutorial report it: `TODO(organizers)`
 
    `TODO(organizers)`: where the dashboard offers to rerun the setup or the firewall rules.
 
-3. Check that both sides run 20.14.1. The headsets do. On the laptop, the dashboard shows its version.
+3. Check that both sides run 20.14.1. The headsets do. On the laptop, the dashboard shows its version, and `check-vr.ps1` reports the version of the registered driver.

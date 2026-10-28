@@ -14,8 +14,10 @@ What each group does in the room. You need a laptop that passed the self-test in
 Everything runs on your group's laptop:
 
 - **The server**, in the WSL distribution `vpcc-server`, sends the *ThaiDancer* V-PCC sequence over HTTP/3. Port **5001** is always clean. Port **5002** carries the impairment you choose with `impair.sh`.
-- **The player**, `VPCC-Tutorial.exe`, fetches the sequence with a native HTTP/3 (QUIC) client, decodes and renders it, and hands the image to SteamVR.
+- **The player** fetches the sequence with a native HTTP/3 (QUIC) client, decodes and renders it. In VR mode (`VPCC-Tutorial.exe`) it hands the image to SteamVR. In desktop mode (`VPCC-Tutorial (desktop).bat`) it shows the dancer in its window and never starts SteamVR.
 - **ALVR** streams SteamVR's image to the headset over Wi-Fi.
+
+The network exercise is identical in both modes. If your group's VR mode is not working after about 5 minutes, continue in desktop mode, or ask an organizer for a spare laptop.
 
 The volumetric traffic never leaves the laptop. Only ALVR uses Wi-Fi, through the
 one router that all groups share. `TODO(organizers)`: router model, if you want it named.
@@ -31,6 +33,8 @@ Each group splits three roles and rotates them between presets:
 - **Headset wearer:** watches the stream and says what they see.
 
 ## 1. Connect the headset
+
+Start things in this order: SteamVR, then ALVR, then connect the headset, and only then the player.
 
 1. Render operator: connect the laptop to the tutorial Wi-Fi network.
 
@@ -68,7 +72,7 @@ Each group splits three roles and rotates them between presets:
    ./start-server.sh
    ```
 
-   You should see `Server address for the render app : 172.x.x.x`. Read the address out to the render operator.
+   You should see a box with `Server address for the render app`. Tell the render operator the server is up.
 
 3. Keep this window open for the whole lab. Open a **second** PowerShell window and enter the server again for the impairment commands:
 
@@ -78,21 +82,27 @@ Each group splits three roles and rotates them between presets:
 
 ## 3. Clean baseline
 
-1. Render operator: start `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
+1. Render operator: with the headset connected, start `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
 
-   You should see the control panel on the laptop screen. The panel is never shown in the headset.
+   You should see the control panel on the laptop screen, with the Start buttons greyed out and `starting VR...` for a few seconds. The panel is never shown in the headset.
 
-2. Type the server address into the **Server** field.
+2. Check the diagnostics lines in the panel. You should see `interop: initialized yes` and the head pose `updating`.
 
-3. Click **Start CLEAN (:5001)**.
+   If VR mode fails, the player switches to the desktop view by itself and shows a line with the fix. See [troubleshooting](setup/troubleshooting.md#vr-mode-and-the-player). After about 5 minutes without a fix, continue in desktop mode with `C:\VPCC-Tutorial\VPCC-Tutorial (desktop).bat`.
 
-   The headset wearer should see the dancer.
+3. Click **Find server**.
 
-4. After about 60 seconds, click **Stop**.
+   You should see the server address filled in. If the panel says the server is not started, check the server window.
 
-   You should see the counts on the status line and `CSV written`.
+4. Click **Start CLEAN (:5001)**.
 
-5. Write down `lost`, `skipped late` and the playback rate in the results table below. This is your baseline. Expect `lost` = 0.
+   You should see the status line change to `streaming CLEAN…`, and the headset wearer sees the dancer.
+
+5. After about 60 seconds, click **Stop**.
+
+   You should see the counts on the status line.
+
+6. Write down `lost`, `skipped late` and the playback rate in the results table below. This is your baseline. Expect `lost` = 0.
 
 ## 4. Impair port 5002
 
