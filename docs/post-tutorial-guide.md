@@ -2,7 +2,7 @@
 
 You now have a working volumetric streaming lab on your laptop. Some next steps:
 
-- Re-run Session 4 with your own impairment values and compare against the room's results
+- Re-run the impairment exercise with your own netem values (`./impair.sh set`) and compare against the room's results
 - Encode a different sequence with TMC2 and serve it (keep the atlas size fixed per sequence)
 - Read the papers below for the full measurement methodology
 
