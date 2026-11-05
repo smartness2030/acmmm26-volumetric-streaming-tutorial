@@ -9,7 +9,7 @@ organizer in the room, or before the tutorial report it: `TODO(organizers)`
 | Machine | Windows | GPU | Date | Result |
 |---|---|---|---|---|
 | Lab PC | Windows 11 | RTX 4070 | Oct 26, 2026 | Pass |
-| Alan's home PC | Windows 11 | not recorded | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
+| Alan's home PC | Windows 11 | `TODO(organizers)` | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
 | Edge renderer | Windows 11 | RTX 4070 | Nov 5, 2026 | Pass after the NAT fix |
 | Attendee-class laptop | `TODO(organizers)` | `TODO(organizers)` | Nov 4, 2026 | Failed, still being diagnosed. `TODO(organizers)`: result |
 
@@ -165,12 +165,6 @@ Get-Content "$env:USERPROFILE\AppData\LocalLow\Smartness\VPCC-Tutorial\Player-pr
    If this fails, install WSL as in [step 2 of the setup guide](windows.md#2-install-wsl).
 
 3. If WSL is installed, enable virtualization (often called Intel VT-x, Intel Virtualization Technology or AMD SVM) in your laptop's BIOS/UEFI setup, then try the import again.
-
-### `curl: option --http3-only: the installed libcurl version does not support this`
-
-**Cause:** this curl has no HTTP/3. The `curl.exe` that comes with Windows does not support it.
-
-**Fix:** use an HTTP/3-capable curl. `TODO(organizers)`: where attendees get one.
 
 ## Headset and ALVR
 

@@ -12,7 +12,7 @@ Your goal in Part 2: a passing self-test on your own laptop, then the clean run,
 | Machine | Windows | GPU | Date | Result |
 |---|---|---|---|---|
 | Lab PC | Windows 11 | RTX 4070 | Oct 26, 2026 | Pass |
-| Alan's home PC | Windows 11 | not recorded | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
+| Alan's home PC | Windows 11 | `TODO(organizers)` | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
 | Edge renderer | Windows 11 | RTX 4070 | Nov 5, 2026 | Pass after the NAT fix |
 | Attendee-class laptop | `TODO(organizers)` | `TODO(organizers)` | Nov 4, 2026 | Failed, still being diagnosed. `TODO(organizers)`: result |
 
@@ -41,7 +41,7 @@ Do this before the theory block.
 
 3. Connect the station laptop to the router's Wi-Fi.
 
-   `TODO(organizers)`: SSID and password.
+   SSID `HandsOn`, password `Tutorial26`.
 
 4. Open PowerShell and enter the server:
 
@@ -93,9 +93,7 @@ Do this before the theory block.
 
 13. Connect the projector and show the laptop screen.
 
-14. Get the headset mirror window ready.
-
-    `TODO(organizers)`: which mirror window you use.
+14. Open SteamVR's **Display VR View** window. This is the headset mirror.
 
 15. Open `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
 
@@ -221,9 +219,11 @@ Do this before the theory block.
 
 ## Part 2: Attendee setup and run (own laptop, with floor support)
 
-The organizers have the installers on a USB stick: `VPCC-Tutorial-win64-v1.0.zip`, `vpcc-server.tar` and the ALVR 20.14.1 streamer (`alvr_streamer_windows.zip`). `check-wsl.ps1` and `check-vr.ps1` are on the [release page](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0).
+The organizers have these files on a USB stick: `VPCC-Tutorial-win64-v1.0.zip`, `vpcc-server.tar`, the ALVR 20.14.1 streamer (`alvr_streamer_windows.zip`), `check-wsl.ps1` and `check-vr.ps1`.
 
-If you already passed the [home self-test](setup/windows.md#8-self-test-no-headset-needed), start the server, then go to step 23 of the full track.
+SteamVR is not on the stick. It needs internet only to install, because Steam downloads it, and it runs offline afterwards. ALVR needs internet on its first run.
+
+If you already passed the [home self-test](setup/windows.md#8-self-test-no-headset-needed), start the server, then go to step 22 of the full track.
 
 ### Entry check
 
@@ -257,29 +257,27 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 2. If Windows asks you to restart, restart now.
 
-3. Copy the three installers from the USB stick into your `Downloads` folder.
-
-4. Download `check-wsl.ps1` and `check-vr.ps1` from the release page into the same folder.
+3. Copy the five files from the USB stick into your `Downloads` folder.
 
 **Import the server**
 
-5. Open PowerShell (no admin needed) and check the WSL networking mode:
+4. Open PowerShell (no admin needed) and check the WSL networking mode:
 
    ```powershell
    Select-String -Path "$env:USERPROFILE\.wslconfig" -Pattern "networkingMode" -ErrorAction SilentlyContinue
    ```
 
-   You should see nothing, or a line ending in `networkingMode=nat`. If so, skip to step 9.
+   You should see nothing, or a line ending in `networkingMode=nat`. If so, skip to step 8.
 
-6. If you see `networkingMode=mirrored`, open the file:
+5. If you see `networkingMode=mirrored`, open the file:
 
    ```powershell
    notepad "$env:USERPROFILE\.wslconfig"
    ```
 
-7. Change the line to `networkingMode=nat`, or remove the line. Save and close Notepad.
+6. Change the line to `networkingMode=nat`, or remove the line. Save and close Notepad.
 
-8. Shut down WSL:
+7. Shut down WSL:
 
    ```powershell
    wsl --shutdown
@@ -287,21 +285,21 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
    This closes every WSL distribution and any open shells in them.
 
-9. Go to your Downloads folder:
+8. Go to your Downloads folder:
 
    ```powershell
    cd $HOME\Downloads
    ```
 
-10. Import the server:
+9. Import the server:
 
-    ```powershell
-    wsl --import vpcc-server C:\vpcc-server .\vpcc-server.tar --version 2
-    ```
+   ```powershell
+   wsl --import vpcc-server C:\vpcc-server .\vpcc-server.tar --version 2
+   ```
 
-    You should see `The operation completed successfully.`
+   You should see `The operation completed successfully.`
 
-11. Check the server setup:
+10. Check the server setup:
 
     ```powershell
     powershell -ExecutionPolicy Bypass -File .\check-wsl.ps1
@@ -311,7 +309,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 **Start the server**
 
-12. Open a new PowerShell window and enter the server:
+11. Open a new PowerShell window and enter the server:
 
     ```powershell
     wsl -d vpcc-server
@@ -319,7 +317,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
     You should see `VPCC tutorial server. Commands:`.
 
-13. Start the server:
+12. Start the server:
 
     ```sh
     ./start-server.sh
@@ -327,17 +325,17 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
     You should see `port 5002: clean` and a box with `Server address for the render app`. Leave this window open.
 
-**Install SteamVR and ALVR**
+**Install SteamVR and ALVR (needs internet)**
 
-14. Open Steam and sign in.
+13. Open Steam and sign in.
 
-15. Go to **Library**, open the **Tools** list and install **SteamVR**.
+14. Go to **Library**, open the **Tools** list and install **SteamVR**.
 
-16. Launch SteamVR once, let it finish any update, then close it.
+15. Launch SteamVR once, let it finish any update, then close it.
 
     You should see the small SteamVR status window while it runs.
 
-17. In your first PowerShell window, unzip ALVR:
+16. In your first PowerShell window, unzip ALVR:
 
     ```powershell
     Expand-Archive $HOME\Downloads\alvr_streamer_windows.zip -DestinationPath C:\ALVR
@@ -345,17 +343,17 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
     You should see `ALVR Dashboard.exe` in `C:\ALVR`.
 
-18. Start the dashboard:
+17. Start the dashboard:
 
     ```powershell
     & "C:\ALVR\ALVR Dashboard.exe"
     ```
 
-19. Follow the first-time setup to the end and accept the administrator prompt. This registers ALVR's driver with SteamVR.
+18. Follow the first-time setup to the end and accept the administrator prompt. This registers ALVR's driver with SteamVR.
 
-20. If ALVR offers an update, decline it. Then close the dashboard.
+19. If ALVR offers an update, decline it. Then close the dashboard.
 
-21. Check the VR setup:
+20. Check the VR setup:
 
     ```powershell
     powershell -ExecutionPolicy Bypass -File .\check-vr.ps1
@@ -365,7 +363,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 **Run the player**
 
-22. Unzip the player:
+21. Unzip the player:
 
     ```powershell
     Expand-Archive $HOME\Downloads\VPCC-Tutorial-win64-v1.0.zip -DestinationPath C:\VPCC-Tutorial
@@ -373,25 +371,25 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
     You should see `VPCC-Tutorial.exe` directly in `C:\VPCC-Tutorial`.
 
-23. Open `C:\VPCC-Tutorial\VPCC-Tutorial (desktop).bat`.
+22. Open `C:\VPCC-Tutorial\VPCC-Tutorial (desktop).bat`.
 
     Windows SmartScreen warns about an unrecognized app because the player is not signed. Click **More info**, then **Run anyway**.
 
     You should see the player window, and the status line says `ready`.
 
-24. Click **Find server**.
+23. Click **Find server**.
 
     You should see the address filled in and `find server: found` in the panel. Do this every time: the address changes after a reboot or `wsl --shutdown`, so do not type it from memory.
 
-25. Click **Start CLEAN (:5001)**.
+24. Click **Start CLEAN (:5001)**.
 
     You should see `streaming CLEAN from` the address, with a timer, and the dancer play.
 
-26. After about 60 seconds, click **Stop**.
+25. After about 60 seconds, click **Stop**.
 
     You should see the counts on the status line.
 
-27. Read the result:
+26. Read the result:
 
     ```powershell
     Get-Content "$env:USERPROFILE\AppData\LocalLow\Smartness\VPCC-Tutorial\Player.log" | Select-String "Tutorial\] Session complete"
@@ -407,7 +405,9 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 **VR mode (optional, if a headset is free)**
 
-28. Close the player.
+27. Close the player.
+
+28. Connect your laptop to the router's Wi-Fi, the one the headsets use: SSID `HandsOn`, password `Tutorial26`.
 
 29. Start SteamVR.
 
@@ -427,7 +427,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
     You should see `interop: initialized yes` and the head pose `updating` in the panel.
 
-34. Repeat steps 24 to 27.
+34. Repeat steps 23 to 26.
 
 **Collapse run (if time allows)**
 
@@ -457,7 +457,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 39. After about 60 seconds, click **Stop**.
 
-40. Read the result as in step 27.
+40. Read the result as in step 26.
 
     You should see a new line for port 5002, with almost nothing on time, like this 30 s run:
 
@@ -491,7 +491,7 @@ If you already passed the [home self-test](setup/windows.md#8-self-test-no-heads
 
 ### Server-half track (no discrete GPU)
 
-You can do this on any laptop. You run the server, apply the impairment and prove it with curl. You need an HTTP/3-capable curl. The `curl.exe` that comes with Windows does not have HTTP/3. `TODO(organizers)`: where attendees get one.
+You can do this on any laptop. You run the server, apply the impairment and read it back with `./impair.sh show`. No client runs in this track, so the packet counters stay at 0. `show` proves that netem is in place on port 5002 with the values you chose. It does not show packets going through it.
 
 1. In the administrator PowerShell, install WSL:
 
@@ -503,27 +503,25 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
 2. If Windows asks you to restart, restart now.
 
-3. Copy `vpcc-server.tar` from the USB stick into your `Downloads` folder.
+3. Copy `vpcc-server.tar` and `check-wsl.ps1` from the USB stick into your `Downloads` folder.
 
-4. Download `check-wsl.ps1` from the release page into the same folder.
-
-5. Open PowerShell (no admin needed) and check the WSL networking mode:
+4. Open PowerShell (no admin needed) and check the WSL networking mode:
 
    ```powershell
    Select-String -Path "$env:USERPROFILE\.wslconfig" -Pattern "networkingMode" -ErrorAction SilentlyContinue
    ```
 
-   You should see nothing, or a line ending in `networkingMode=nat`. If so, skip to step 9.
+   You should see nothing, or a line ending in `networkingMode=nat`. If so, skip to step 8.
 
-6. If you see `networkingMode=mirrored`, open the file:
+5. If you see `networkingMode=mirrored`, open the file:
 
    ```powershell
    notepad "$env:USERPROFILE\.wslconfig"
    ```
 
-7. Change the line to `networkingMode=nat`, or remove the line. Save and close Notepad.
+6. Change the line to `networkingMode=nat`, or remove the line. Save and close Notepad.
 
-8. Shut down WSL:
+7. Shut down WSL:
 
    ```powershell
    wsl --shutdown
@@ -531,21 +529,21 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
    This closes every WSL distribution and any open shells in them.
 
-9. Go to your Downloads folder:
+8. Go to your Downloads folder:
 
    ```powershell
    cd $HOME\Downloads
    ```
 
-10. Import the server:
+9. Import the server:
 
-    ```powershell
-    wsl --import vpcc-server C:\vpcc-server .\vpcc-server.tar --version 2
-    ```
+   ```powershell
+   wsl --import vpcc-server C:\vpcc-server .\vpcc-server.tar --version 2
+   ```
 
-    You should see `The operation completed successfully.`
+   You should see `The operation completed successfully.`
 
-11. Check the server setup:
+10. Check the server setup:
 
     ```powershell
     powershell -ExecutionPolicy Bypass -File .\check-wsl.ps1
@@ -553,7 +551,7 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
     You should see no `FAIL` lines, and `networking mode` must be `nat`. Every `FAIL` line is followed by its fix.
 
-12. Open a new PowerShell window and enter the server:
+11. Open a new PowerShell window and enter the server:
 
     ```powershell
     wsl -d vpcc-server
@@ -561,19 +559,27 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
     You should see `VPCC tutorial server. Commands:`.
 
-13. Start the server:
+12. Start the server:
 
     ```sh
     ./start-server.sh
     ```
 
-    You should see `port 5002: clean` and a box with `Server address for the render app`. Note the address and leave this window open.
+    You should see `port 5002: clean` and a box with `Server address for the render app`. Leave this window open.
 
-14. Open a third PowerShell window and enter the server again:
+13. Open another PowerShell window and enter the server again:
 
     ```powershell
     wsl -d vpcc-server
     ```
+
+14. Check that port 5002 is clean:
+
+    ```sh
+    ./impair.sh show
+    ```
+
+    You should see `qdisc mq 0: root` as the first line, and no `netem` line.
 
 15. Apply the collapse preset:
 
@@ -583,52 +589,23 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
     You should see `port 5002: delay 80ms`.
 
-16. In your first PowerShell window, go to the folder that holds the HTTP/3 curl.
-
-17. Set the address from step 13 and the segment. Replace `172.x.x.x` with your address:
-
-    ```powershell
-    $addr = "172.x.x.x"
-    $seg = "thaidancer_LD_qp32_gof4_300f/thaidancer_LD_qp32_gof4_300f_0000.bin"
-    ```
-
-18. Fetch segment 0000 from the clean port:
-
-    ```powershell
-    .\curl.exe --http3-only -k -s -o NUL -w "%{http_version} %{size_download} %{time_total}`n" "https://${addr}:5001/$seg"
-    ```
-
-    You should see HTTP version 3, the size in bytes and the time in seconds:
-
-    ```
-    3 723098 0.006920
-    ```
-
-19. Fetch the same segment from the impaired port:
-
-    ```powershell
-    .\curl.exe --http3-only -k -s -o NUL -w "%{http_version} %{size_download} %{time_total}`n" "https://${addr}:5002/$seg"
-    ```
-
-    You should see the same size, in about half a second:
-
-    ```
-    3 723098 0.502714
-    ```
-
-20. In the third window, read the counters:
+16. Read the counters:
 
     ```sh
     ./impair.sh show
     ```
 
-    You should see a last line like this:
+    You should see a `qdisc netem 300:` line with the preset, and `Sent 0 bytes 0 pkt` under it, like this:
 
     ```
-    netem 300: 614 sent, 0 dropped, drop ratio 0.000%
+    qdisc netem 300: parent 30:1 limit 10000 delay 80ms seed 18105222936481057096
+     Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0)
+     backlog 0b 0p requeues 0
     ```
 
-21. Reset the port:
+    The `seed` differs on every run. The `netem 300:` summary line of the full track does not appear, because no packets went through the queue.
+
+17. Reset the port:
 
     ```sh
     ./impair.sh reset
@@ -636,7 +613,15 @@ You can do this on any laptop. You run the server, apply the impairment and prov
 
     You should see `port 5002: clean`.
 
-**What to record:** the curl time on port 5001, the curl time on port 5002, and the `netem 300` line.
+18. Show that it is clean:
+
+    ```sh
+    ./impair.sh show
+    ```
+
+    You should see `qdisc mq 0: root` as the first line, and no `netem` line.
+
+**What to record:** the `qdisc netem 300:` line from step 16.
 
 **Where to get help:** raise your hand for floor support, and read [troubleshooting](setup/troubleshooting.md). Before or after the tutorial: `TODO(organizers)` (report channel).
 
@@ -688,9 +673,9 @@ Netem stays on until someone resets it, and one forgotten reset leaves port 5002
 
 | preset | netem | what you see |
 |---|---|---|
-| `loss-null` | loss 18% | no visible effect: QUIC recovers before the deadline |
+| `loss-null` | loss 18% | barely visible: a few GOFs skipped per minute, QUIC recovers nearly everything before the deadline |
 | `loss-collapse` | loss 25% | most GOFs late or lost |
-| `delay-null` | delay 40 ms | no visible effect |
+| `delay-null` | delay 40 ms | no visible effect in our runs |
 | `delay-collapse` | delay 80 ms | playback collapses. This is the visible demo |
 | `bursts` | 2 s of 80 ms delay every 10 s, until Ctrl+C | probably nothing, but the log shows skipped GOFs |
 
@@ -725,7 +710,7 @@ Fill in one row per run. The first columns come from the `Session complete` line
 
 Then answer:
 
-1. Why does 18% loss cost nothing while 25% collapses playback?
+1. Why does 18% loss cost almost nothing while 25% collapses playback?
 2. Why does a 2 s delay spike barely matter, while a steady 80 ms delay ruins playback?
 
 ## What the lab shows
@@ -733,6 +718,6 @@ Then answer:
 Read this after you answer the questions.
 
 - The player receives the sequence in groups of frames (GOFs) of 133 ms each. A GOF arrives whole before its deadline or not at all.
-- A small change in loss or delay flips playback from untouched to collapsed. At 18% loss QUIC still recovers before the deadline, at 25% it no longer does. That cliff is the lesson.
+- A small change in loss or delay flips playback from nearly untouched to collapsed. At 18% loss QUIC still recovers nearly everything before the deadline, at 25% it no longer does. That cliff is the lesson.
 - Short spikes are absorbed by the decoder's buffer of about 0.5 s. A steady delay is not a spike, so the buffer cannot hide it.
 - The frame time stays near 30 ms even in the collapse. The renderer is fine. The GOFs are late.

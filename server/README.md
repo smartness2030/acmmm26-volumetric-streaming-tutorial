@@ -4,6 +4,10 @@ These are the scripts of the tutorial server. The server image `vpcc-server.tar`
 already contains the ones it runs, in `/srv/vpcc`, so attendees do not need to copy
 anything from here. They are published so you can read what the server does.
 
+The `list` text in `impair.sh` was reworded after the v1.0 image was built, so
+`./impair.sh list` inside that image prints the older text. The presets and their
+values are the same.
+
 | File | What it is |
 |---|---|
 | `Caddyfile` | Caddy configuration: the sequence over HTTP/3 on ports 5001 and 5002 |
