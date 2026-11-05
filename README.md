@@ -3,23 +3,48 @@
 **ACM Multimedia 2026 tutorial** · Rio de Janeiro, Brazil · November 10–14, 2026
 DOI: [10.1145/3767308.3836607](https://doi.org/10.1145/3767308.3836607)
 
-In this half-day tutorial you stream a volumetric video end to end and watch what
-the network does to it. Each group gets one Meta Quest 3 and one Windows laptop.
-The laptop serves the MPEG V-PCC sequence *ThaiDancer* over HTTP/3 (QUIC) from a
-small Linux server in WSL, decodes and renders it in a compiled Unity player, and
-streams the result to the headset through SteamVR and ALVR. You then impair the
-network on the server side with `tc netem` and see how a small change in loss or
-delay flips playback from untouched to collapsed.
+In this half-day tutorial you see a volumetric video streamed end to end and watch
+what the network does to it. One laptop serves the MPEG V-PCC sequence *ThaiDancer*
+over HTTP/3 (QUIC) from a small Linux server in WSL, decodes and renders it in a
+compiled Unity player, and streams the result to a Meta Quest 3 through SteamVR and
+ALVR. Impairing the network on the server side with `tc netem` shows how a small
+change in loss or delay flips playback from untouched to collapsed.
+
+## Format and schedule
+
+The day starts with theory. An organizer then runs the whole lab live on one laptop,
+with the screen projected and the headset view mirrored. The lab time is for setting
+up your own laptop, with floor support. There is no station rotation.
+
+Your goal in the lab: a passing self-test on your own laptop, then the clean run, then
+the collapse run if time allows. Without a discrete GPU you do the server half (WSL,
+Caddy, and the impairment checked with `impair.sh show` and curl) on any laptop.
+
+| Block | Minutes |
+|---|---|
+| Welcome | 10 |
+| Theory | 50 |
+| Demo | 20 |
+| Break | 15 |
+| Lab | 70 |
+| Results | 15 |
+| Advanced topics | 30 |
+| Wrap-up | 20 |
+
+The tutorial starts at 8:30 and ends by 12:30.
 
 ## Before you come
 
-You need a Windows 11 x64 laptop with a discrete GPU (NVIDIA RTX recommended),
+We recommend the home self-test. If you did not get to it, you can do the same steps
+in the lab time.
+
+You need a Windows 11 x64 laptop with a **discrete GPU** (NVIDIA RTX recommended),
 admin rights, virtualization enabled in the BIOS/UEFI, a Steam account and your
 charger. The organizers bring the headsets.
 
-Install four things at home. It takes about 45–60 minutes, mostly downloads:
+Install four things. It takes about 45–60 minutes, mostly downloads:
 
-1. WSL, with `wsl --install --no-distribution`.
+1. WSL, with `wsl --install --no-distribution`, in its default NAT networking mode.
 2. The tutorial server image, with `wsl --import`.
 3. SteamVR and the ALVR streamer 20.14.1.
 4. The tutorial player, then run the self-test.
@@ -27,10 +52,25 @@ Install four things at home. It takes about 45–60 minutes, mostly downloads:
 Follow the full steps in **[docs/setup/windows.md](docs/setup/windows.md)**. If the
 self-test fails, report it before the tutorial so we can help.
 
+## Release
+
+The final build is
+**[v1.0](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0)**.
+In the room, the player zip, `vpcc-server.tar` and the ALVR 20.14.1 streamer are also
+on a USB stick.
+
+| Asset | What it is |
+|---|---|
+| `VPCC-Tutorial-win64-v1.0.zip` | The Windows player |
+| `vpcc-server.tar` | The WSL server image |
+| `check-wsl.ps1` | Checks WSL, the networking mode, netem and the server address |
+| `check-vr.ps1` | Checks SteamVR, ALVR, the GPU and the graphics preference |
+| `SHA256SUMS.txt` | SHA-256 of the four files above |
+
 ## Guides
 
-- [Windows 11 setup](docs/setup/windows.md): install everything and pass the self-test at home.
-- [Lab guide](docs/lab-guide.md): what each group does in the room.
+- [Windows 11 setup](docs/setup/windows.md): install everything and pass the self-test.
+- [Lab guide](docs/lab-guide.md): the demonstration, and the setup on your own laptop.
 - [Troubleshooting](docs/setup/troubleshooting.md): symptoms, causes and fixes.
 - [After the tutorial](docs/post-tutorial-guide.md): ideas to keep experimenting.
 
@@ -42,6 +82,7 @@ from it in these points:
 - Rendering goes through OpenVR (SteamVR) and ALVR, not OpenXR.
 - The client is a compiled Unity 6 build, not a Unity 2022.3 project to open.
 - The server runs in WSL on the render laptop, not on a separate laptop.
+- The lab is one live demonstration, then setup on your own laptop, not group stations.
 - One shared router brought by the organizers, not per-laptop Wi-Fi 6E hotspots.
 - The impairment exercise shows cliffs (no effect versus collapse), not a 0–4% loss / 20–80 ms delay sweep.
 - There is no subjective rating step.
@@ -50,7 +91,7 @@ from it in these points:
 
 ```
 docs/        Setup guide, lab guide, troubleshooting, post-tutorial guide
-server/      The server scripts (already inside the server image)
+server/      The server scripts (already inside the server image) and the two check scripts
 sessions/    Outlines of the two lecture sessions
 slides/      Lecture slides (PDF)
 ```

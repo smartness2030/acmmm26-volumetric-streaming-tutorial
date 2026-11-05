@@ -1,0 +1,25 @@
+# VPCC tutorial server: ThaiDancer V-PCC segments over HTTP/3.
+#
+# Started by start-server.sh, which exports VPCC_IP (this server's address,
+# the one the render app connects to). Port 5001 is always clean, port 5002
+# carries whatever impair.sh applies.
+#
+# tls internal: Caddy's own CA issues a certificate for VPCC_IP. The render
+# app runs TLS 1.3 but does not verify the certificate, so nothing has to be
+# installed on Windows. default_sni covers clients that send no SNI for an IP
+# address (curl does this).
+{
+	admin off
+	skip_install_trust
+	auto_https disable_redirects
+	default_sni {$VPCC_IP}
+}
+
+https://{$VPCC_IP}:5001, https://{$VPCC_IP}:5002 {
+	tls internal
+	root * {$VPCC_ROOT:/srv/vpcc}/content
+	file_server
+	log {
+		output file {$VPCC_ROOT:/srv/vpcc}/logs/access.log
+	}
+}

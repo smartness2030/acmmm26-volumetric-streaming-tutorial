@@ -1,4 +1,4 @@
-# Session 5: Advanced Topics (35 min, lecture)
+# Session 5: Advanced Topics (30 min, lecture)
 
 - Codec configuration: GOF length, random access vs low delay, and what it does to deadlines
 - Adaptive bitrate for volumetric content
