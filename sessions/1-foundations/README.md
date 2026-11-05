@@ -1,4 +1,4 @@
-# Session 1: Foundations (45 min, lecture)
+# Session 1: Foundations (50 min, lecture)
 
 1. Point cloud representation and the MPEG V-PCC standards context (Testoni)
 2. QUIC/HTTP3 transport: streams, 0-RTT, head-of-line blocking, qlog (Teixeira da Silva)
