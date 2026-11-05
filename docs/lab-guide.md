@@ -11,10 +11,7 @@ Your goal in Part 2: a passing self-test on your own laptop, then the clean run,
 
 | Machine | Windows | GPU | Date | Result |
 |---|---|---|---|---|
-| Lab PC | Windows 11 | RTX 4070 | Oct 26, 2026 | Pass |
-| Alan's home PC | Windows 11 | `TODO(organizers)` | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
-| Edge renderer | Windows 11 | RTX 4070 | Nov 5, 2026 | Pass after the NAT fix |
-| Attendee-class laptop | `TODO(organizers)` | `TODO(organizers)` | Nov 4, 2026 | Failed, still being diagnosed. `TODO(organizers)`: result |
+| Attendee-class laptop | Windows 11 | RTX 3050 | Nov 4, 2026 |
 
 ## How the lab works
 
