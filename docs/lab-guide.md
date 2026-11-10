@@ -672,7 +672,7 @@ Netem stays on until someone resets it, and one forgotten reset leaves port 5002
 
 To try your own values, use `./impair.sh set "<netem arguments>"`, for example `./impair.sh set "loss 20%"`.
 
-## Reference numbers
+<!-- ## Reference numbers
 
 Edge renderer, Nov 5, 2026, RTX 4070, Quest 3 + ALVR 20.14.1. The lab PC numbers are a second data point.
 
@@ -682,7 +682,7 @@ Edge renderer, Nov 5, 2026, RTX 4070, Quest 3 + ALVR 20.14.1. The lab PC numbers
 | `bursts` | 17 of 473 missed (3.6%), recovers after each spike, 62 s run | 13 of 458 missed (2.8%), 60 s run |
 | `delay-collapse` | 998 of 1002 missed (99.6%), 176 s run | 160 of 161 missed (99.4%), 30 s run |
 
-A run sends about 7.5 GOFs per second, so a 60 s clean run shows about 455. Missed means `lost` plus `lateSkipped`.
+A run sends about 7.5 GOFs per second, so a 60 s clean run shows about 455. Missed means `lost` plus `lateSkipped`. -->
 
 ## Results table
 
