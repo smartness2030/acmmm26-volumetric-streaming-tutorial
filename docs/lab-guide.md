@@ -9,8 +9,6 @@ Your goal in Part 2: a passing self-test on your own laptop, then the clean run,
 
 ## Tested on
 
-| Machine | Windows | GPU | Date |
-|---|---|---|---|---|
 | Attendee-class laptop | Windows 11 | RTX 3050 | Nov 4, 2026 |
 
 ## How the lab works
