@@ -34,7 +34,7 @@ Caddy, and the impairment checked with `./impair.sh show`) on any laptop.
 
 The tutorial starts at 8:30 and ends at 12:30.
 
-## Before you come
+## Setup
 
 We recommend the home self-test. If you did not get to it, you can do the same steps
 in the lab time.
@@ -77,10 +77,6 @@ internet on its first run.
 - [Troubleshooting](docs/setup/troubleshooting.md): symptoms, causes and fixes.
 - [After the tutorial](docs/post-tutorial-guide.md): ideas to keep experimenting.
 
-## Changes since the abstract
-
-The published abstract was written before the lab was built. The tutorial differs
-from it in these points:
 
 - Rendering goes through OpenVR (SteamVR) and ALVR, not OpenXR.
 - The client is a compiled Unity 6 build, not a Unity 2022.3 project to open.
