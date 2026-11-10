@@ -37,9 +37,10 @@ Do this before the theory block.
 
 3. Connect the station laptop to the router's Wi-Fi.
 
-   `TODO(organizers)`: SSID and password.
+    SSID: Handson
+    Pwd: Tutorial26
 
-4. Open PowerShell and enter the server:
+5. Open PowerShell and enter the server:
 
    ```powershell
    wsl -d vpcc-server
@@ -47,7 +48,7 @@ Do this before the theory block.
 
    You should see `VPCC tutorial server. Commands:`.
 
-5. Start the server:
+6. Start the server:
 
    ```sh
    ./start-server.sh
@@ -55,13 +56,13 @@ Do this before the theory block.
 
    You should see `port 5002: clean` and a box with `Server address for the render app`. Leave this window open.
 
-6. Open a second PowerShell window and enter the server again:
+7. Open a second PowerShell window and enter the server again:
 
    ```powershell
    wsl -d vpcc-server
    ```
 
-7. Check that port 5002 is clean:
+8. Check that port 5002 is clean:
 
    ```sh
    ./impair.sh show
@@ -69,45 +70,45 @@ Do this before the theory block.
 
    You should see `qdisc mq 0: root` as the first line, and no `netem` line.
 
-8. Start SteamVR.
+9. Start SteamVR.
 
    You should see the SteamVR status window.
 
-9. Start the ALVR dashboard:
+10. Start the ALVR dashboard:
 
    ```powershell
    & "C:\ALVR\ALVR Dashboard.exe"
    ```
 
-10. Put on the headset and open the ALVR app on it.
+11. Put on the headset and open the ALVR app on it.
 
-11. In the dashboard, click **Trust** for this headset if it asks.
+12. In the dashboard, click **Trust** for this headset if it asks.
 
     You should see the headset connect in the dashboard.
 
-12. Take off the headset and leave it on standby.
+13. Take off the headset and leave it on standby.
 
-13. Connect the projector and show the laptop screen.
+14. Connect the projector and show the laptop screen.
 
-14. Get the headset mirror window ready.
+15. Get the headset mirror window ready.
 
     `TODO(organizers)`: which mirror window you use.
 
-15. Open `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
+16. Open `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
 
     You should see `starting VR...`, then `ready`.
 
-16. Click **Find server**.
+17. Click **Find server**.
 
     You should see the address filled in and `find server: found` in the panel.
 
-17. Click **Start CLEAN (:5001)**. This also saves the address in `tutorial_config.json`.
+18. Click **Start CLEAN (:5001)**. This also saves the address in `tutorial_config.json`.
 
-18. After a few seconds, click **Stop**.
+19. After a few seconds, click **Stop**.
 
     You should see `lost 0` on the status line.
 
-19. Close the player.
+20. Close the player.
 
 ### Demo steps
 
