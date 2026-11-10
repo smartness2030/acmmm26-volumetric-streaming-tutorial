@@ -80,7 +80,7 @@ Do this before the theory block.
    & "C:\ALVR\ALVR Dashboard.exe"
    ```
 
-11. Put on the headset and open the ALVR app on it.
+11. Put on the headset and open the ALVR app on it. 
 
 12. In the dashboard, click **Trust** for this headset if it asks.
 
@@ -91,8 +91,6 @@ Do this before the theory block.
 14. Connect the projector and show the laptop screen.
 
 15. Get the headset mirror window ready.
-
-    `TODO(organizers)`: which mirror window you use.
 
 16. Open `C:\VPCC-Tutorial\VPCC-Tutorial.exe`.
 
