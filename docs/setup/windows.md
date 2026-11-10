@@ -15,7 +15,7 @@ NVIDIA or AMD. If you only have an integrated GPU, skip this guide and do the
 | Machine | Windows | GPU | Date | Result |
 |---|---|---|---|---|
 | Lab PC | Windows 11 | RTX 4070 | Oct 26, 2026 | Pass |
-| Alan's home PC | Windows 11 | not recorded | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
+| Alan's home PC | Windows 11 | `TODO(organizers)` | Oct 28, 2026 | Pass, Wi-Fi + Quest 3 |
 | Edge renderer | Windows 11 | RTX 4070 | Nov 5, 2026 | Pass after the NAT fix |
 | Attendee-class laptop | `TODO(organizers)` | `TODO(organizers)` | Nov 4, 2026 | Failed, still being diagnosed. `TODO(organizers)`: result |
 
@@ -37,7 +37,9 @@ The organizers bring the Meta Quest 3 headsets, with the ALVR 20.14.1 client alr
 
 ## 1. Download the tutorial files
 
-In the room, the organizers have the player zip, `vpcc-server.tar` and the ALVR 20.14.1 streamer on a USB stick.
+In the room, the organizers have the player zip, `vpcc-server.tar`, the ALVR 20.14.1 streamer, `check-wsl.ps1` and `check-vr.ps1` on a USB stick.
+
+SteamVR is not on the stick. It needs internet only to install, because Steam downloads it, and it runs offline afterwards. ALVR needs internet on its first run.
 
 1. Sign in to GitHub in your browser, with the account that the organizers gave access to. The repository is private, so the links below show **404 Page not found** if you are not signed in. `TODO(organizers)`: drop this step when the repository is public.
 

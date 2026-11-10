@@ -40,8 +40,8 @@ preset_args() {
 list() {
     cat <<'EOF'
 preset           netem arguments          expected on the render app
-loss-null        loss 18%                 no visible effect: QUIC recovers before the deadline
-delay-null       delay 40ms               no visible effect: QUIC recovers before the deadline
+loss-null        loss 18%                 barely visible: a few GOFs skipped per minute, QUIC recovers nearly everything before the deadline
+delay-null       delay 40ms               no visible effect in our runs
 loss-collapse    loss 25%                 most GOFs late or lost
 delay-collapse   delay 80ms               most GOFs late
 bursts [on off d] delay spike on/off loop  periodic delay spikes: GOFs that miss the deadline are skipped, then playback recovers (default 2s on / 8s off at 80ms)

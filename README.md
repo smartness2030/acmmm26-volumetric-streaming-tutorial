@@ -8,10 +8,31 @@ what the network does to it. One laptop serves the MPEG V-PCC sequence *ThaiDanc
 over HTTP/3 (QUIC) from a small Linux server in WSL, decodes and renders it in a
 compiled Unity player, and streams the result to a Meta Quest 3 through SteamVR and
 ALVR. Impairing the network on the server side with `tc netem` shows how a small
-change in loss or delay flips playback from untouched to collapsed.
+change in loss or delay flips playback from nearly untouched to collapsed.
 
+## Format and schedule
 
-The tutorial starts at 8:30 and ends by 12:30.
+The day starts with theory. An organizer then runs the whole lab live on one laptop,
+with the screen projected and the headset view mirrored. The lab time is for setting
+up your own laptop, with floor support. There is no station rotation.
+
+Your goal in the lab: a passing self-test on your own laptop, then the clean run, then
+the collapse run if time allows. Without a discrete GPU you do the server half (WSL,
+Caddy, and the impairment checked with `./impair.sh show`) on any laptop.
+
+| Block | Minutes |
+|---|---|
+| Welcome | 10 |
+| Theory | 50 |
+| Demo | 20 |
+| Break | 15 |
+| Lab | 80 |
+| Results | 15 |
+| Advanced topics | 30 |
+| Wrap-up | 20 |
+| **Total** | **240** |
+
+The tutorial starts at 8:30 and ends at 12:30.
 
 ## Setup
 
@@ -36,6 +57,10 @@ self-test fails, report it before the tutorial so we can help.
 
 The final build is
 **[v1.0](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0)**.
+In the room, the player zip, `vpcc-server.tar`, the ALVR 20.14.1 streamer, `check-wsl.ps1`
+and `check-vr.ps1` are also on a USB stick. SteamVR is not on the stick. It needs internet
+only to install, because Steam downloads it, and it runs offline afterwards. ALVR needs
+internet on its first run.
 
 | Asset | What it is |
 |---|---|
@@ -53,6 +78,13 @@ The final build is
 - [After the tutorial](docs/post-tutorial-guide.md): ideas to keep experimenting.
 
 
+- Rendering goes through OpenVR (SteamVR) and ALVR, not OpenXR.
+- The client is a compiled Unity 6 build, not a Unity 2022.3 project to open.
+- The server runs in WSL on the render laptop, not on a separate laptop.
+- The lab is one live demonstration, then setup on your own laptop, not group stations.
+- One shared router brought by the organizers, not per-laptop Wi-Fi 6E hotspots.
+- The impairment exercise shows cliffs (little or no effect versus collapse), not a 0–4% loss / 20–80 ms delay sweep.
+- There is no subjective rating step.
 
 ## Repository layout
 
