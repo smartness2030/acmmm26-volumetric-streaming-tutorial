@@ -62,18 +62,6 @@ The final build is
 - [Troubleshooting](docs/setup/troubleshooting.md): symptoms, causes and fixes.
 - [After the tutorial](docs/post-tutorial-guide.md): ideas to keep experimenting.
 
-## Changes since the abstract
-
-The published abstract was written before the lab was built. The tutorial differs
-from it in these points:
-
-- Rendering goes through OpenVR (SteamVR) and ALVR, not OpenXR.
-- The client is a compiled Unity 6 build, not a Unity 2022.3 project to open.
-- The server runs in WSL on the render laptop, not on a separate laptop.
-- The lab is one live demonstration, then setup on your own laptop, not group stations.
-- One shared router brought by the organizers, not per-laptop Wi-Fi 6E hotspots.
-- The impairment exercise shows cliffs (no effect versus collapse), not a 0–4% loss / 20–80 ms delay sweep.
-- There is no subjective rating step.
 
 ## Repository layout
 
