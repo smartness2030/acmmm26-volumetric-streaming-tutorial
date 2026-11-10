@@ -214,12 +214,6 @@ Do this before the theory block.
 
 ## Part 2: Attendee setup and run (own laptop, with floor support)
 
-The organizers have these files on a USB stick: `VPCC-Tutorial-win64-v1.0.zip`, `vpcc-server.tar`, the ALVR 20.14.1 streamer (`alvr_streamer_windows.zip`), `check-wsl.ps1` and `check-vr.ps1`.
-
-SteamVR is not on the stick. It needs internet only to install, because Steam downloads it, and it runs offline afterwards. ALVR needs internet on its first run.
-
-If you already passed the [home self-test](setup/windows.md#8-self-test-no-headset-needed), start the server, then go to step 22 of the full track.
-
 ### Entry check
 
 1. Check Windows: press Windows+R, type `winver`, press Enter.
