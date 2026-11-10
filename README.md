@@ -20,17 +20,6 @@ Your goal in the lab: a passing self-test on your own laptop, then the clean run
 the collapse run if time allows. Without a discrete GPU you do the server half (WSL,
 Caddy, and the impairment checked with `./impair.sh show`) on any laptop.
 
-| Block | Minutes |
-|---|---|
-| Welcome | 10 |
-| Theory | 50 |
-| Demo | 20 |
-| Break | 15 |
-| Lab | 80 |
-| Results | 15 |
-| Advanced topics | 30 |
-| Wrap-up | 20 |
-| **Total** | **240** |
 
 The tutorial starts at 8:30 and ends at 12:30.
 
@@ -57,10 +46,7 @@ self-test fails, report it before the tutorial so we can help.
 
 The final build is
 **[v1.0](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0)**.
-In the room, the player zip, `vpcc-server.tar`, the ALVR 20.14.1 streamer, `check-wsl.ps1`
-and `check-vr.ps1` are also on a USB stick. SteamVR is not on the stick. It needs internet
-only to install, because Steam downloads it, and it runs offline afterwards. ALVR needs
-internet on its first run.
+
 
 | Asset | What it is |
 |---|---|
