@@ -20,17 +20,6 @@ Your goal in the lab: a passing self-test on your own laptop, then the clean run
 the collapse run if time allows. Without a discrete GPU you do the server half (WSL,
 Caddy, and the impairment checked with `impair.sh show` and curl) on any laptop.
 
-| Block | Minutes |
-|---|---|
-| Welcome | 10 |
-| Theory | 50 |
-| Demo | 20 |
-| Break | 15 |
-| Lab | 70 |
-| Results | 15 |
-| Advanced topics | 30 |
-| Wrap-up | 20 |
-
 The tutorial starts at 8:30 and ends by 12:30.
 
 ## Before you come
@@ -56,8 +45,7 @@ self-test fails, report it before the tutorial so we can help.
 
 The final build is
 **[v1.0](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0)**.
-In the room, the player zip, `vpcc-server.tar` and the ALVR 20.14.1 streamer are also
-on a USB stick.
+
 
 | Asset | What it is |
 |---|---|
