@@ -10,30 +10,10 @@ compiled Unity player, and streams the result to a Meta Quest 3 through SteamVR 
 ALVR. Impairing the network on the server side with `tc netem` shows how a small
 change in loss or delay flips playback from untouched to collapsed.
 
-## Format and schedule
-
-The day starts with theory. An organizer then runs the whole lab live on one laptop,
-with the screen projected and the headset view mirrored. The lab time is for setting
-up your own laptop, with floor support. There is no station rotation.
-
-Your goal in the lab: a passing self-test on your own laptop, then the clean run, then
-the collapse run if time allows. Without a discrete GPU you do the server half (WSL,
-Caddy, and the impairment checked with `impair.sh show` and curl) on any laptop.
-
-| Block | Minutes |
-|---|---|
-| Welcome | 10 |
-| Theory | 50 |
-| Demo | 20 |
-| Break | 15 |
-| Lab | 70 |
-| Results | 15 |
-| Advanced topics | 30 |
-| Wrap-up | 20 |
 
 The tutorial starts at 8:30 and ends by 12:30.
 
-## Before you come
+## Setup
 
 We recommend the home self-test. If you did not get to it, you can do the same steps
 in the lab time.
@@ -56,8 +36,6 @@ self-test fails, report it before the tutorial so we can help.
 
 The final build is
 **[v1.0](https://github.com/smartness2030/acmmm26-volumetric-streaming-tutorial/releases/tag/v1.0)**.
-In the room, the player zip, `vpcc-server.tar` and the ALVR 20.14.1 streamer are also
-on a USB stick.
 
 | Asset | What it is |
 |---|---|
